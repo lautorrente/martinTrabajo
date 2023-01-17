@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stream Conditioning | Mk</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://kit.fontawesome.com/1fc8ce125a.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Martian+Mono:wght@200&family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="nav-index">
+        <div>
+            <h2>Add Stream Conditioning</h2>
+            <ul>
+                <li><a href="../index.html"><i class="fa-solid fa-house"></i></a></li>
+                <li><a href="#"><i class="fa-solid fa-video"></i></a></li>
+                <li><a href="#"><i class="fa-solid fa-file"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <ul class="ul-sConditioning-management">
+        <li><a href="#">General</a></li>
+        <li><a href="#">Input</a></li>
+        <li><a href="#">Advanced Parameters</a></li>
+        <li><a href="#">Output</a></li>
+    </ul>
+
+    <div class="form-fields">
+        <form action="#" class="form-stream-conditioning">
+            <div><span>Type</span><input type="text" value="ESAM" placeholder="ESAM" disabled></div>
+            <div><span>Version</span><input type="text" value="2013" placeholder="2013" disabled></div>
+            <div><span>Expect Notifications</span><input type="checkbox" id="input-notifications" disabled></div>
+            <div><span>End Points</span>
+                <div>
+                    <ul class="ul-endpoints-headers">
+                        <li>ID</li>
+                        <li>Network name</li>
+                        <li>Zone identity</li>
+                        <li>Primary URL</li>
+                        <li>Secondary URL</li>
+                        <li>Attributes</li>
+                        <li>Actions</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-plus"></i>Add Endpoints</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Create End Point</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                     <form action="#">
+                        <div><span>ID</span><input type="text" id="input-endpoint-id"></div>
+                        <div><span>Network Name</span><input type="text" id="input-endpoint-netName"></div>
+                        <div><span>Zone Identity</span><input type="text" id="input-endpoint-ZoneIdentity"></div>
+                        <div class="signals-container" id="signals-container">
+                            <span>Signal acquisitions</span>
+                            <div class="signal-acquisitions-headers">
+                                <div><span>URL</span><input type="text" placeholder="http://" value="http://" id="url-endpoint"></input></div>
+                                <div><span>Listening Path</span><input type="text" placeholder="/" value="/" id="listening-path-endpoint"></input></div>
+                                <div><span>Actions</span></div>
+                            </div>
+                            <button class="button-clips" type="button" id="btnAddSignals"><i class="fa-solid fa-plus"></i>Add</button>
+                        </div>
+                     </form>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="btnSaveChanges" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+                </div>
+            </div>          
+        </form>
+    </div>
+
+    <div class="endpoints-values" id="endpoints-values"></div>
+
+
+    <script src="../js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>

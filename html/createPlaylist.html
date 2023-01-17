@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlists | mK</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://kit.fontawesome.com/1fc8ce125a.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Martian+Mono:wght@200&family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="nav-index">
+        <div>
+            <h2>Create a Playlist</h2>
+            <ul>
+                <li><a href="../index.html"><i class="fa-solid fa-house"></i></a></li>
+                <li><a href="#"><i class="fa-solid fa-video"></i></a></li>
+                <li><a href="#"><i class="fa-solid fa-file"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <ul class="ul-cPlaylist-management">
+        <li><a href="#">General</a></li>
+        <li><a href="#">Input</a></li>
+        <li><a href="#">Advanced Parameters</a></li>
+        <li><a href="#">Output</a></li>
+    </ul>
+    
+    <hr>
+
+    <div class="general-parameters-cP">
+        <h4>General</h4>
+        <form class="input-container">
+            <div><span>Name</span><input type="text" placeholder="Enter a name" id="input-name" required></div>
+            <div><span>Id</span><input type="text" placeholder="Enter an Id" id="input-id" required></div>
+            <div>
+                <span>Clips</span>
+                <div class="modal-container">
+                    <div class="interior">
+                      <a class="btn" href="#open-modal" id="button-add-clips"><i class="fa-solid fa-plus i-button-clips"></i>Add clips</a>
+                    </div>
+                  </div>
+                  <div id="open-modal" class="modal-window">
+                    <div>
+                        <h1>Clips</h1>
+                        <div class="clips-container">
+                            <div><span>Material ID</span><input class="input-materialId" id="input-material-id" type="text" placeholder="Insert material ID" required></div>
+                            <div><span>Duration (in seconds)</span><input type="text" id="input-duration" required></div>
+                            <div><span>Start Offset (in seconds)</span><input type="text" id="input-startOffset" required></div>
+                        </div>
+                        <button id="guardarClips"><a href="#" class="modal-close">Guardar</a></button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </form>
+
+        <div id="container-clips-view">
+            
+        </div>
+
+        <div class="button-guardar-container">
+            <button class="button-guardar" id="button-guardar" type="submit">Save & Create</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/index.js"></script>
+    
+</body>
+</html>
