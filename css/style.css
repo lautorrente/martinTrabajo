@@ -18,6 +18,9 @@ hr {
     background-color: #191d70;
     height: 1px;
 }
+.d-none {
+    display: none;
+}
 
 /*         NAV INDEX         */
 .nav-index {
@@ -256,20 +259,58 @@ hr {
     margin: 10px;
     border-radius: 5px;
 }
-.ul-endpoints-headers {
+.endpoints-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    margin: 10px;
+    justify-content: space-around;
 }
 
-.signal-acquisitions-headers {
+#signal-block-container,  #signal-block-container2{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    background-color: rgb(207, 207, 200);
+    justify-content: space-around;
+    background-color: cornsilk;
 }
-.signal-acquisitions-headers div{
+#signal-block-container div, #signal-block-container2 div  {
     display: flex;
     flex-direction: column;
+}
+#button-trash-signal-aq, #button-trash-signal-aq2 {
+    align-self: center;
+}
+.button-add {
+    border-radius: 5px;
+    padding: 4px;
+    margin: 3px;
+    background-color: cornsilk;
+}
+.button-add-attributes {
+    border-radius: 5px;
+    padding: 4px;
+    margin: 3px;
+    background-color: burlywood;
+}
+.attributes-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: burlywood;
+}
+.attributes-container div{
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+.buttons-container button {
+    border-radius: 5px;
+    padding: 5px;
+}
+.buttons-container .btnSaveExit {
+    background-color: #191d70;
+    color: #fff;
 }

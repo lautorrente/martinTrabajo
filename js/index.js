@@ -118,32 +118,3 @@ let llamadaApi = btnGuardar.addEventListener('click', () => {
     channels.appendChild(div);
 
 }) */
-
-
-// STREAM CONDITIONING
-let inputEndpointID = document.getElementById('input-endpoint-id');
-let inputEndpointNetworkN = document.getElementById('input-endpoint-netName');
-let inputEndpointZoneIdent = document.getElementById('input-endpoint-ZoneIdentity');
-let inputURLEndpoint = document.getElementById('url-endpoint');
-let inputListeningPath = document.getElementById('listening-path-endpoint');
-let inputURLEndpoint2 = document.getElementById('url-endpoint2');
-let inputListeningPath2 = document.getElementById('listening-path-endpoint2');
-// BUTTONS
-let btnAddSignal = document.getElementById('btnAddSignals');
-let btnSaveChanges = document.getElementById('btnSaveChanges');
-// CONTAINERS
-let signalAcquisitionsC = document.getElementById('signals-container');
-
-// CREAR NUEVO SIGNAL ACQUISITIONS
-btnAddSignal.addEventListener('click', () => {
-    let div = document.createElement('div');
-    div.className = "signal-acquisitions-headers";
-    div.innerHTML = `
-    <div class="signal-acquisitions-headers">
-        <div><span>URL</span><input type="text" placeholder="http://" value="http://" id="url-endpoint2"></input></div>
-        <div><span>Listening Path</span><input type="text" placeholder="/" value="/" id="listening-path-endpoint2"></input></div>
-        <div><span>Actions</span></div>
-    </div>
-    `;
-    signalAcquisitionsC.appendChild(div);
-})
