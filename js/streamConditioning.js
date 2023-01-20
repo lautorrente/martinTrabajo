@@ -17,13 +17,14 @@ let inputListeningPath = document.getElementById('sa-input-listening-path');
 let btnDeleteSignal = document.getElementById('button-trash-signal-aq');
 // CONTAINER
 let signalAcquisitionsContainer = document.getElementById('signal-acquisitions-container');
+let signalBlockContainer = document.getElementById('signal-block-container');
 
 
 // CREAR CLASE PARA SIGNAL ACQUISITIONS
 class signalAcquisitions {
     constructor(url, listeningPath){
         this.url = url;
-        this.listPath = listeningPath;
+        this.listeningPath = listeningPath;
     }
 }
 // ARRAY 
@@ -31,39 +32,36 @@ const signalsArray = [];
 
 // PUSH AL ARRAY
 
-
-// AGREGAR 2do BLOQUE SIGNAL ACQUISITIONS
-btnAddBlock.addEventListener('click', () => {
-    btnAddBlock.classList.add('d-none');
-    let div = document.createElement('div');
-    div.innerHTML = `
-    <div id="signal-block-container2">
-        <div><span>URL</span><input type="text" placeholder="http://" id="sa-input-url2"></div>
-        <div><span>Listening Path</span><input type="text" placeholder="/" id="sa-input-listening-path2"></div>
-        <div><span>Actions</span><span id="button-trash-signal-aq2"><i class="fa-solid fa-trash"></i></span></div>
-    </div>
-    `;
-    signalAcquisitionsContainer.appendChild(div);
-    
-    
-})
-// ELEMENTOS 2do BLOQUE 
-let inputURL2 = document.getElementById('sa-input-url2');
-let inputListeningPath2 = document.getElementById('sa-input-listening-path2');
-let btnDeleteSignal2 = document.getElementById('button-trash-signal-aq2');
+//PARSEAR A JS
+function parseAcquisitions() {
+        let acquisitionsStr = JSON.stringify(signalsArray);
+        console.log(acquisitionsStr);
+    }
 
 btnSaveChanges.addEventListener('click', () => {
     let url = inputURL.value;
     let listeningPath = inputListeningPath.value;
     let objeto = new signalAcquisitions(url, listeningPath);
     signalsArray.push(objeto);
-
-    let url2 = inputURL2.value;
-    let listeningPath2 = inputListeningPath2.value;
-    let objeto2 = new signalAcquisitions(url2, listeningPath2);
-    signalsArray.push(objeto2);
     console.log(signalsArray);
+    parseAcquisitions();
+
+    if (signalsArray.length === 2) {
+        btnAddEndpoints.classList.add('d-none');
+    }
+    else {
+        
+    }
 })
+
+// DELETE ELEMENT 
+btnDeleteSignal.addEventListener('click', () => {
+    signalsArray.splice(0);
+    console.log(signalsArray);
+    signalBlockContainer.classList.add('d-none');
+    btnAddSignal.classList.remove('d-none');
+
+});
 
 
 // ATTRIBUTES ------------------------------------
@@ -111,8 +109,8 @@ btnSaveChanges.addEventListener('click', () => {
 
 // TRAER API SC
 let btnSaveExit = document.getElementById('btnSaveExit');
-let llamadaApi = btnSaveExit.addEventListener('click', () => {
-    fetch(`https://cors-anywhere.herokuapp.com/http://152.171.185.241:8080/api/services/streamConditionings/PRISMA_EVEN/endPoints/PRISMABARKER_zone1/operations/${inputId.value}`, {
+let llamadaApiSC = btnSaveExit.addEventListener('click', () => {
+    fetch(`https://cors-anywhere.herokuapp.com/http://152.171.185.241:8080/api/services/streamConditionings`, {
     'method': 'POST',
     'headers': {
         'Content-Type': 'application/json',
@@ -134,47 +132,11 @@ let llamadaApi = btnSaveExit.addEventListener('click', () => {
                      "dataId": "5f60afb7b994673a62f6c450",
                      "networkName": `${inputEndpointNetworkN.value}`,
                      "zoneIdentity": `${inputEndpointZoneIdent.value}`,
-                     "signalAcquisitions": [
-                        {
-                            "url": "http://10.3.3.36:80003/esam?tt=12",
-                            "listeningPath": "/?variant=Primary"
-                        },
-                        {
-                            "url": "http://10.3.3.37:80003/esam?tt=12",
-                            "listeningPath": "/?variant=Secondary"
-                        }
-                     ],
+                     "signalAcquisitions": signalsArray,
                      "server": {
                         "port": 8975
                      }
                  }]
-             },
-             "notification": {
-                 "receivers": [
-                     {
-                         "id": "webhookEp1",
-                         "url": "http://172.17.159.45:3000/webhookEp1",
-                         "eventType": "scte35",
-                         "signal": "incoming",
-                         "filters": [
-                             [
-                                 {
-                                     "field": "{{segmentationTypeId}}",
-                                     "operator": "==",
-                                     "value": "16"
-                                 }
-                             ]
-                         ],
-                         "key": " "
-                     },
-                     {
-                         "id": "webhookEp2",
-                         "eventType": "scte35",
-                         "url": "http://172.17.159.45:3000/webhookEp2",
-                         "signal": "outgoing",
-                         "filters": []
-                     }
-                 ]
              },
              "timings": {
                   "eventExpirationDelay": 86400,
@@ -188,3 +150,25 @@ let llamadaApi = btnSaveExit.addEventListener('click', () => {
 .then(response => response.json())
 .then(data => console.log(data));
 });
+
+
+// LOCAL STORAGE
+let inputTypeOfService = document.getElementById('input-stream-conditioning');
+
+
+
+/*------------- VER CANALES EN EL INDEX ------------------*/ 
+btnSaveExit.addEventListener('click', () => {
+    localStorage.setItem("Name of service", inputNameID.value);
+    localStorage.setItem("Type of service", inputTypeOfService.value);
+    let div = document.createElement('div');
+    div.innerHTML = `
+    <p>${localStorage.getItem('Name of Service')}</p>
+    <p>${inputTypeOfService.value}</p>
+    <div>
+        <span><i class="fa-solid fa-pen-to-square"></i></span>
+        <span><i class="fa-solid fa-trash"></i></span>
+    </div>
+    `;
+    channels.appendChild(div);
+})

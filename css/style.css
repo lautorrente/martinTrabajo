@@ -78,16 +78,16 @@ hr {
 }
 
 /*------------------ CREATE PLAYLIST --------------------*/
-.ul-cPlaylist-management, .ul-sConditioning-management {
+.ul-cPlaylist-management, .ul-sConditioning-management, .ul-create-live-encoding-management {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
 }
-.ul-cPlaylist-management li, .ul-sConditioning-management li{
+.ul-cPlaylist-management li, .ul-sConditioning-management li, .ul-create-live-encoding-management li {
     margin: 10px;
     cursor: crosshair;
 }
-.ul-cPlaylist-management li a, .ul-sConditioning-management li a{
+.ul-cPlaylist-management li a, .ul-sConditioning-management li a, .ul-create-live-encoding-management li a{
     color: #000000;
 
 }
@@ -313,4 +313,30 @@ hr {
 .buttons-container .btnSaveExit {
     background-color: #191d70;
     color: #fff;
+}
+/*---------------------------- LIVE ENCODING -----------------------*/
+.general-LE {
+    padding: 20px;
+    background-color: #9fa2db;
+}
+.input-LE {
+    padding: 20px;
+    background-color: #6f72ab;
+}
+.output-LE {
+    padding: 20px;
+    background-color: #505389;
+}
+.general-LE h2, .input-LE h2, .output-LE h2{
+    margin: 10px;
+    text-align: center;
+}
+.fields span {
+    font-weight: 600;
+    margin: 10px;
+}
+.fields {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
